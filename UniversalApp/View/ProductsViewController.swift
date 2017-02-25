@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Reachability
 
 class ProductsViewController: UIViewController {
 
@@ -20,7 +21,13 @@ class ProductsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
+    // MARK: - Network Connectivity
+    func hasConnectivity() -> Bool {
+        let reachability: Reachability = Reachability.forInternetConnection()
+        let networkStatus: Int = reachability.currentReachabilityStatus().rawValue
+        return networkStatus != 0
+    }
 
     /*
     // MARK: - Navigation
