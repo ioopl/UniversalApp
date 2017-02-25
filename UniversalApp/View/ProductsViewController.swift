@@ -43,6 +43,14 @@ class ProductsViewController: UIViewController {
             )
             return
         }
+        fetchDatafromURL()
+    }
+
+    private func fetchDatafromURL() {
+         let url = "https://api.johnlewis.com/v1/products/search?q=dishwasher&key=Wu1Xqn3vNrd1p7hqkvB6hEu0G9OrsYGb&pageSize=20"
+        API.fetchDatafromURLInBackground(url: url) { (ProductObject, error) in
+            print(ProductObject)
+        }
     }
 
     // MARK: - Reachability - Check Network Connectivity
