@@ -111,6 +111,7 @@
 		BCBA1DF71E5DF12200DDF238 /* UniversalApp */ = {
 			isa = PBXGroup;
 			children = (
+				BCBA1E1A1E61ACD200DDF238 /* Resources */,
 				BCBA1DF81E5DF12200DDF238 /* AppDelegate.swift */,
 				BCBA1DFA1E5DF12200DDF238 /* ViewController.swift */,
 				BCBA1DFC1E5DF12200DDF238 /* Main.storyboard */,
@@ -129,6 +130,13 @@
 				BCBA1E181E61ABC000DDF238 /* APITests.swift */,
 			);
 			path = UniversalAppTests;
+			sourceTree = "<group>";
+		};
+		BCBA1E1A1E61ACD200DDF238 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
