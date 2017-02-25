@@ -11,6 +11,7 @@ import Reachability
 
 class ProductsViewController: UIViewController {
 
+    // MARK: - ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
