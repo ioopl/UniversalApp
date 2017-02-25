@@ -15,6 +15,7 @@
 		BCBA1E001E5DF12200DDF238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCBA1DFF1E5DF12200DDF238 /* Assets.xcassets */; };
 		BCBA1E031E5DF12200DDF238 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCBA1E011E5DF12200DDF238 /* LaunchScreen.storyboard */; };
 		BCBA1E0E1E5DF12200DDF238 /* UniversalAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA1E0D1E5DF12200DDF238 /* UniversalAppTests.swift */; };
+		BCBA1E191E61ABC000DDF238 /* APITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA1E181E61ABC000DDF238 /* APITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		BCBA1E091E5DF12200DDF238 /* UniversalAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UniversalAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCBA1E0D1E5DF12200DDF238 /* UniversalAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalAppTests.swift; sourceTree = "<group>"; };
 		BCBA1E0F1E5DF12200DDF238 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCBA1E181E61ABC000DDF238 /* APITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITests.swift; sourceTree = "<group>"; };
 		BEC2038B25FAE8B433FED67D /* Pods-UniversalApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniversalApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UniversalApp/Pods-UniversalApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +126,7 @@
 			children = (
 				BCBA1E0D1E5DF12200DDF238 /* UniversalAppTests.swift */,
 				BCBA1E0F1E5DF12200DDF238 /* Info.plist */,
+				BCBA1E181E61ABC000DDF238 /* APITests.swift */,
 			);
 			path = UniversalAppTests;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCBA1E191E61ABC000DDF238 /* APITests.swift in Sources */,
 				BCBA1E0E1E5DF12200DDF238 /* UniversalAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -541,6 +545,7 @@
 				BCBA1E141E5DF12200DDF238 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BCBA1E151E5DF12200DDF238 /* Build configuration list for PBXNativeTarget "UniversalAppTests" */ = {
 			isa = XCConfigurationList;
@@ -549,6 +554,7 @@
 				BCBA1E171E5DF12200DDF238 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
