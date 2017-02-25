@@ -113,6 +113,9 @@
 		BCBA1DF71E5DF12200DDF238 /* UniversalApp */ = {
 			isa = PBXGroup;
 			children = (
+				BCBA1E1F1E61AEE300DDF238 /* Controller */,
+				BCBA1E1E1E61AEDD00DDF238 /* View */,
+				BCBA1E1D1E61AED300DDF238 /* Model */,
 				BCBA1E1A1E61ACD200DDF238 /* Resources */,
 				BCBA1DF81E5DF12200DDF238 /* AppDelegate.swift */,
 				BCBA1DFA1E5DF12200DDF238 /* ViewController.swift */,
@@ -140,6 +143,27 @@
 				BCBA1E1B1E61AD3700DDF238 /* Localizable.strings */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		BCBA1E1D1E61AED300DDF238 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BCBA1E1E1E61AEDD00DDF238 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BCBA1E1F1E61AEE300DDF238 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
