@@ -13,8 +13,7 @@ class ProductsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,6 +23,21 @@ class ProductsViewController: UIViewController {
 
     // MARK: - Initialisation/Setup
     private func setupUI() {
+
+        guard self.hasConnectivity() else {
+            self.showAlertView(
+                title: NSLocalizedString("TITLE_NETWORK_ERROR", comment: "Title for network error"),
+                message: NSLocalizedString("MESSAGE_CONNECTION_OFFLINE", comment: "Message shown when connection is offline."),
+                okTitle: NSLocalizedString("BTN_RETRY", comment: "Title for Retry button"),
+                okHandler: { (action) -> Void in
+                    // Try again method here
+            },
+                cancelButton: true,
+                cancelTitle: NSLocalizedString("BTN_CANCEL", comment: "Default cancel button title"),
+                cancelHandler: nil
+            )
+            return
+        }
     }
 
     // MARK: - Reachability - Check Network Connectivity
