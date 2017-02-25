@@ -48,6 +48,6 @@ extension UIViewController {
             alertController.addAction(cancelAction)
         }
 
-        present(alertController, animated: true, completion: nil)
+        AppDelegate.sharedInstance()?.window?.visibleViewController()?.present(alertController, animated: true, completion: nil)
     }
 }
