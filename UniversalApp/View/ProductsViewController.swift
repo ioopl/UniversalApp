@@ -22,8 +22,12 @@ class ProductsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Network Connectivity
-    func hasConnectivity() -> Bool {
+    // MARK: - Reachability - Check Network Connectivity
+    /**
+     This API call checks if the Network is available.
+     - returns Bool : true if the network is available
+     */
+    private func hasConnectivity() -> Bool {
         let reachability: Reachability = Reachability.forInternetConnection()
         let networkStatus: Int = reachability.currentReachabilityStatus().rawValue
         return networkStatus != 0
