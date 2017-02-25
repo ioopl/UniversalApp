@@ -16,6 +16,7 @@
 		BCBA1E031E5DF12200DDF238 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCBA1E011E5DF12200DDF238 /* LaunchScreen.storyboard */; };
 		BCBA1E0E1E5DF12200DDF238 /* UniversalAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA1E0D1E5DF12200DDF238 /* UniversalAppTests.swift */; };
 		BCBA1E191E61ABC000DDF238 /* APITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA1E181E61ABC000DDF238 /* APITests.swift */; };
+		BCBA1E1C1E61AD3700DDF238 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCBA1E1B1E61AD3700DDF238 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		BCBA1E0D1E5DF12200DDF238 /* UniversalAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalAppTests.swift; sourceTree = "<group>"; };
 		BCBA1E0F1E5DF12200DDF238 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCBA1E181E61ABC000DDF238 /* APITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITests.swift; sourceTree = "<group>"; };
+		BCBA1E1B1E61AD3700DDF238 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		BEC2038B25FAE8B433FED67D /* Pods-UniversalApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniversalApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UniversalApp/Pods-UniversalApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +137,7 @@
 		BCBA1E1A1E61ACD200DDF238 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BCBA1E1B1E61AD3700DDF238 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCBA1E031E5DF12200DDF238 /* LaunchScreen.storyboard in Resources */,
+				BCBA1E1C1E61AD3700DDF238 /* Localizable.strings in Resources */,
 				BCBA1E001E5DF12200DDF238 /* Assets.xcassets in Resources */,
 				BCBA1DFE1E5DF12200DDF238 /* Main.storyboard in Resources */,
 			);
