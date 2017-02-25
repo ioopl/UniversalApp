@@ -5,3 +5,14 @@
   Created by UHS on 25/02/2017.
   Copyright © 2017 Apkia Technologies. All rights reserved.
 */
+
+// MARK: - Buttons
+"BTN_OK" = "OK";
+"BTN_CANCEL" = "Cancel";
+"BTN_RETRY" = "Retry";
+
+// MARK: - Alert Titles
+"TITLE_NETWORK_ERROR" = "Network Error";
+
+// MARK: - Alert Messages
+"MESSAGE_CONNECTION_OFFLINE" = "Connection is offline.";
