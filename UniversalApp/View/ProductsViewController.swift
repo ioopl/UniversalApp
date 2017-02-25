@@ -22,6 +22,10 @@ class ProductsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: - Initialisation/Setup
+    private func setupUI() {
+    }
+
     // MARK: - Reachability - Check Network Connectivity
     /**
      This API call checks if the Network is available.
