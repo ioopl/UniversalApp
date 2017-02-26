@@ -23,7 +23,7 @@ class API: NSObject {
 
             switch(response.result) {
             case .success :
-                if let data = response.result.value{
+                if let data = response.result.value {
                     completion(data as AnyObject?, nil)
                 }
                 break
