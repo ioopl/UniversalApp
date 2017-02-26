@@ -9,7 +9,7 @@
 import UIKit
 import Reachability
 
-class ProductsViewController: UIViewController {
+class ProductsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     // MARK: - Variables 
     var productObject: Product? = nil
