@@ -23,9 +23,9 @@ struct Product {
             productId = product["productId"] as! String
             title = product["title"] as! String
             image = product["image"] as! String
+            let priceDict = product["price"] as! NSDictionary
+            let priceNow = priceDict["now"] as! String
+            price = priceNow
         }
-
-//        let priceWas = dictionary["was"] as! String
-//        let priceNow = dictionary["now"] as! String
     }
 }
