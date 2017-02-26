@@ -15,7 +15,7 @@ class API: NSObject {
     /**
      Passes the URL to the server for data.
      - parameter url: url for the API
-     - returns:  JSON Object
+     - returns:  JSON Object of type Any.
      */
     class internal func fetchDatafromURLInBackground(url: String, completion: @escaping (_ JSONObject: Any?, _ error: NSError?) ->()) {
 
