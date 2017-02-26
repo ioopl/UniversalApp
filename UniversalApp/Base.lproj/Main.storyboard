@@ -52,6 +52,10 @@
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <connections>
+                                            <outlet property="imageViewThumbnail" destination="S1f-Z2-cz2" id="YEH-i3-P1d"/>
+                                            <outlet property="labelTitle" destination="Qnm-r9-F25" id="L9s-af-ugX"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

@@ -9,5 +9,8 @@
 import UIKit
 
 class ProductsCollectionViewCell: UICollectionViewCell {
-    
+
+    // MARK: - Outlets
+    @IBOutlet weak var imageViewThumbnail: UIImageView!
+    @IBOutlet weak var labelTitle: UILabel!
 }
