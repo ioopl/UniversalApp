@@ -22,9 +22,10 @@ struct Product {
             
             productId = product["productId"] as! String
             title = product["title"] as! String
+            image = product["image"] as! String
         }
 
-//        let pWas = dictionary["was"] as! String
-//        let pNow = dictionary["now"] as! String
+//        let priceWas = dictionary["was"] as! String
+//        let priceNow = dictionary["now"] as! String
     }
 }
