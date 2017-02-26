@@ -20,6 +20,7 @@
 		BCBA1E251E62084400DDF238 /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA1E241E62084400DDF238 /* UIViewController+Alerts.swift */; };
 		BCBA1E271E6209C300DDF238 /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA1E261E6209C300DDF238 /* UIWindow.swift */; };
 		BCBA1E2A1E62345A00DDF238 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA1E291E62345A00DDF238 /* API.swift */; };
+		BCBA1E2F1E62F42700DDF238 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA1E2E1E62F42700DDF238 /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		BCBA1E241E62084400DDF238 /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 		BCBA1E261E6209C300DDF238 /* UIWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
 		BCBA1E291E62345A00DDF238 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		BCBA1E2E1E62F42700DDF238 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		BEC2038B25FAE8B433FED67D /* Pods-UniversalApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniversalApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UniversalApp/Pods-UniversalApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +156,7 @@
 		BCBA1E1D1E61AED300DDF238 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BCBA1E2E1E62F42700DDF238 /* Product.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				BCBA1DF91E5DF12200DDF238 /* AppDelegate.swift in Sources */,
 				BCBA1E271E6209C300DDF238 /* UIWindow.swift in Sources */,
 				BCBA1E2A1E62345A00DDF238 /* API.swift in Sources */,
+				BCBA1E2F1E62F42700DDF238 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

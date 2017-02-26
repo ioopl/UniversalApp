@@ -11,6 +11,8 @@ import Reachability
 
 class ProductsViewController: UIViewController {
 
+    var productObject: Product? = nil
+
     // MARK: - ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,9 +49,30 @@ class ProductsViewController: UIViewController {
     }
 
     private func fetchDatafromURL() {
-         let url = "https://api.johnlewis.com/v1/products/search?q=dishwasher&key=Wu1Xqn3vNrd1p7hqkvB6hEu0G9OrsYGb&pageSize=20"
-        API.fetchDatafromURLInBackground(url: url) { (ProductObject, error) in
-            print(ProductObject)
+         let url = "https://api.johnlewis.com/v1/products/search?q=dishwasher&key=Wu1Xqn3vNrd1p7hqkvB6hEu0G9OrsYGb&pageSize=3"
+        API.fetchDatafromURLInBackground(url: url) { (response, error) in
+
+            //debugPrint(response)
+            if let jsonDict = response as? [String:Any],
+                let productsArray = jsonDict["products"] as? [[String:Any]] {
+                print(productsArray)
+
+                self.productObject = Product(dictionary: productsArray)
+                
+
+//                for product in productsArray {
+//
+//                    guard let productId = product["productId"] as? String else { return }
+//                    productObject.productId = productId
+//                }
+//                let productIdArray = productsArray.flatMap { $0["productId"] as? String }
+//                print(productIdArray)
+//
+//                print(productObject)
+//                for product:AnyObject in productObject {
+//                print(productObject.productId)
+//                }
+            }
         }
     }
 
