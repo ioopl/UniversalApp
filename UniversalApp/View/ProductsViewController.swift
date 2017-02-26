@@ -21,6 +21,7 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
     // MARK: - ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Set the CollectionView as views own delegate and datasource
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -102,7 +103,7 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
         // ensure arrray is not empty
         let count = products.count
         if count > 0 {
-            cell.labelTitle.text = products[indexPath.row].productId
+            cell.labelTitle.text = products[indexPath.row].title
         }
         return cell
     }
