@@ -17,14 +17,14 @@ class API: NSObject {
      - parameter url: url for the API
      - returns:  JSON Object
      */
-    class internal func fetchDatafromURLInBackground(url: String, completion: @escaping (_ JSONObject: AnyObject?, _ error: NSError?) ->()) {
+    class internal func fetchDatafromURLInBackground(url: String, completion: @escaping (_ JSONObject: Any?, _ error: NSError?) ->()) {
 
         Alamofire.request(url, method: .get, parameters: ["":""], encoding: URLEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
 
             switch(response.result) {
             case .success :
                 if let data = response.result.value {
-                    completion(data as AnyObject?, nil)
+                    completion(data, nil)
                 }
                 break
 
