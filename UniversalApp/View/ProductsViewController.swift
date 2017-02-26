@@ -104,6 +104,8 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
         let count = products.count
         if count > 0 {
             cell.labelTitle.text = products[indexPath.row].title
+            let imageURL = "https:" + products[indexPath.row].image
+            cell.imageViewThumbnail.downloadedFrom(link: imageURL, contentMode: UIViewContentMode.scaleAspectFill)
         }
         return cell
     }
