@@ -11,7 +11,11 @@ import Reachability
 
 class ProductsViewController: UIViewController {
 
+    // MARK: - Variables 
     var productObject: Product? = nil
+
+    // MARK: - Outlets
+    @IBOutlet weak var collectionView: UICollectionView!
 
     // MARK: - ViewController LifeCycle
     override func viewDidLoad() {
