@@ -58,7 +58,7 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
 
     private func fetchDatafromURL() {
-        let url = "https://api.johnlewis.com/v1/products/search?q=dishwasher&key=Wu1Xqn3vNrd1p7hqkvB6hEu0G9OrsYGb&pageSize=3"
+        let url = "https://api.johnlewis.com/v1/products/search?q=dishwasher&key=Wu1Xqn3vNrd1p7hqkvB6hEu0G9OrsYGb&pageSize=20"
         API.fetchDatafromURLInBackground(url: url) { (response, error) in
 
             if let jsonDict = response as? [String:Any],
