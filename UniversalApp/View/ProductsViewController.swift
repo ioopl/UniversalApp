@@ -13,6 +13,7 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     // MARK: - Variables 
     var productObject: Product? = nil
+    private let reuseIdentifier = "Cell"
 
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -89,6 +90,16 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
         let reachability: Reachability = Reachability.forInternetConnection()
         let networkStatus: Int = reachability.currentReachabilityStatus().rawValue
         return networkStatus != 0
+    }
+
+    // MARK: - CollectionView 
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProductsCollectionViewCell
+        return cell
     }
 
     /*
