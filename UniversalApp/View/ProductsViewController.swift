@@ -11,7 +11,7 @@ import Reachability
 
 class ProductsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    // MARK: - Variables 
+    // MARK: - Variables
     var productObject: Product? = nil
     private let reuseIdentifier = "Cell"
 
@@ -21,6 +21,10 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
     // MARK: - ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Set the CollectionView as views own delegate and datasource
+        collectionView.delegate = self
+        collectionView.dataSource = self
+
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -36,6 +40,9 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
     // MARK: - Initialisation/Setup
     private func setupUI() {
 
+        // Register collection view custom cell class
+        collectionView.register(ProductsCollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseIdentifier)
+
         guard self.hasConnectivity() else {
             self.showAlertView(
                 title: NSLocalizedString("TITLE_NETWORK_ERROR", comment: "Title for network error"),
@@ -50,11 +57,12 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
             )
             return
         }
+
         fetchDatafromURL()
     }
 
     private func fetchDatafromURL() {
-         let url = "https://api.johnlewis.com/v1/products/search?q=dishwasher&key=Wu1Xqn3vNrd1p7hqkvB6hEu0G9OrsYGb&pageSize=3"
+        let url = "https://api.johnlewis.com/v1/products/search?q=dishwasher&key=Wu1Xqn3vNrd1p7hqkvB6hEu0G9OrsYGb&pageSize=3"
         API.fetchDatafromURLInBackground(url: url) { (response, error) in
 
             //debugPrint(response)
@@ -63,20 +71,20 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
                 print(productsArray)
 
                 self.productObject = Product(dictionary: productsArray)
-                
+                self.collectionView.reloadData()
 
-//                for product in productsArray {
-//
-//                    guard let productId = product["productId"] as? String else { return }
-//                    productObject.productId = productId
-//                }
-//                let productIdArray = productsArray.flatMap { $0["productId"] as? String }
-//                print(productIdArray)
-//
-//                print(productObject)
-//                for product:AnyObject in productObject {
-//                print(productObject.productId)
-//                }
+                //                for product in productsArray {
+                //
+                //                    guard let productId = product["productId"] as? String else { return }
+                //                    productObject.productId = productId
+                //                }
+                //                let productIdArray = productsArray.flatMap { $0["productId"] as? String }
+                //                print(productIdArray)
+                //
+                //                print(productObject)
+                //                for product:AnyObject in productObject {
+                //                print(productObject.productId)
+                //                }
             }
         }
     }
@@ -92,24 +100,26 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
         return networkStatus != 0
     }
 
-    // MARK: - CollectionView 
+    // MARK: - CollectionView
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProductsCollectionViewCell
+        cell.labelTitle.text = "Test"
         return cell
     }
 
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
