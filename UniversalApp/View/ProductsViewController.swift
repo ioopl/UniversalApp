@@ -12,8 +12,8 @@ import Reachability
 class ProductsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     // MARK: - Variables
-    var productObject: Product? = nil
     private let reuseIdentifier = "Cell"
+    var products = [Product]()
 
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -24,7 +24,6 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
         // Set the CollectionView as views own delegate and datasource
         collectionView.delegate = self
         collectionView.dataSource = self
-
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -49,7 +48,8 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
                 message: NSLocalizedString("MESSAGE_CONNECTION_OFFLINE", comment: "Message shown when connection is offline."),
                 okTitle: NSLocalizedString("BTN_RETRY", comment: "Title for Retry button"),
                 okHandler: { (action) -> Void in
-                    // Try again method here
+                    // Try again
+                    self.setupUI()
             },
                 cancelButton: true,
                 cancelTitle: NSLocalizedString("BTN_CANCEL", comment: "Default cancel button title"),
@@ -65,26 +65,22 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
         let url = "https://api.johnlewis.com/v1/products/search?q=dishwasher&key=Wu1Xqn3vNrd1p7hqkvB6hEu0G9OrsYGb&pageSize=3"
         API.fetchDatafromURLInBackground(url: url) { (response, error) in
 
-            //debugPrint(response)
             if let jsonDict = response as? [String:Any],
                 let productsArray = jsonDict["products"] as? [[String:Any]] {
-                print(productsArray)
 
-                self.productObject = Product(dictionary: productsArray)
-                self.collectionView.reloadData()
+                for product in productsArray {
+                    let prod = Product(dictionary: [product])
+                    self.products.append(prod)
+                }
+                /* OR
+                 let prod = Product(dictionary: productsArray)
+                 self.products.append(prod)
+                 */
 
-                //                for product in productsArray {
-                //
-                //                    guard let productId = product["productId"] as? String else { return }
-                //                    productObject.productId = productId
-                //                }
-                //                let productIdArray = productsArray.flatMap { $0["productId"] as? String }
-                //                print(productIdArray)
-                //
-                //                print(productObject)
-                //                for product:AnyObject in productObject {
-                //                print(productObject.productId)
-                //                }
+                // Back to the main queue(thread), to access any UIKit classes.
+                DispatchQueue.main.async(execute: { () -> Void in
+                    self.collectionView.reloadData()
+                })
             }
         }
     }
@@ -100,15 +96,19 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
         return networkStatus != 0
     }
 
-    // MARK: - CollectionView
-
+    // MARK: - CollectionView Delegate/Datasource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return products.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProductsCollectionViewCell
-        cell.labelTitle.text = "Test"
+
+        // ensure arrray is not empty
+        let count = products.count
+        if count > 0 {
+            cell.labelTitle.text = products[indexPath.row].productId
+        }
         return cell
     }
 
