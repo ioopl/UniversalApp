@@ -12,8 +12,12 @@ import Reachability
 class ProductsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     // MARK: - Variables
-    private let reuseIdentifier = "Cell"
     var products = [Product]()
+
+    // MARK: - Constants
+    private let reuseIdentifier = "Cell"
+    private let searchTerm = "Dishwasher"
+    private let pageSize = "20"
 
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
@@ -34,6 +38,8 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     // MARK: - Initialisation/Setup
     private func setupUI() {
+
+        title = "\(searchTerm.capitalized)(\(pageSize))"
 
         // Register collection view custom cell class
         collectionView.register(ProductsCollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseIdentifier)
@@ -58,7 +64,7 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
 
     private func fetchDatafromURL() {
-        let url = "https://api.johnlewis.com/v1/products/search?q=dishwasher&key=Wu1Xqn3vNrd1p7hqkvB6hEu0G9OrsYGb&pageSize=20"
+        let url = "https://api.johnlewis.com/v1/products/search?q=\(searchTerm)&key=Wu1Xqn3vNrd1p7hqkvB6hEu0G9OrsYGb&pageSize=\(pageSize)"
         API.fetchDatafromURLInBackground(url: url) { (response, error) in
 
             if let jsonDict = response as? [String:Any],
