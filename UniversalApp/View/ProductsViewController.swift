@@ -9,7 +9,7 @@
 import UIKit
 import Reachability
 
-class ProductsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ProductsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     // MARK: - Variables
     private let reuseIdentifier = "Cell"
@@ -99,15 +99,27 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProductsCollectionViewCell
+        // add a border
+        cell.layer.borderColor = UIColor.lightGray.cgColor
+        cell.layer.borderWidth = 0.3
 
         // ensure arrray is not empty
         let count = products.count
         if count > 0 {
             cell.labelTitle.text = products[indexPath.row].title
-            cell.labelPrice.text = products[indexPath.row].price
+            cell.labelPrice.text = "£" + products[indexPath.row].price
             let imageURL = "https:" + products[indexPath.row].image
             cell.imageViewThumbnail.downloadedFrom(link: imageURL, contentMode: UIViewContentMode.scaleAspectFill)
         }
         return cell
+    }
+
+    // MARK: - UICollectionViewDelegateFlowLayout
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 15.0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 15.0
     }
 }
