@@ -7,7 +7,6 @@ target 'UniversalApp' do
 
   # Pods for UniversalApp
 pod 'Alamofire', '~> 4.0'
-pod 'SwiftyJSON'
 pod 'Reachability', '~> 3.2'
 
 
