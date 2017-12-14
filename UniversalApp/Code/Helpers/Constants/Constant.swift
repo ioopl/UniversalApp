@@ -7,8 +7,6 @@
 //
 
 struct Constant {
-    static var APIKey: String = "Wu1Xqn3vNrd1p7hqkvB6hEu0G9OrsYGb"
-    static var PageSize: String = "20"
-    static var SearchedTerm = ""
-    static var APIURL: String = "https://api.johnlewis.com/v1/products/search?q=\(SearchedTerm)&key=\(APIKey)&pageSize=\(PageSize)"
+    static var APIKey: String = "42b1c939f4743c1795620262dc138cd4"
+    static var APIURL: String = "http://ws.audioscrobbler.com/2.0/?method=track.search"
 }

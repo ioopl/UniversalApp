@@ -61,7 +61,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
 
     private func fetchDatafromURL() {
         results.removeAll()
-        let url = "http://ws.audioscrobbler.com/2.0/?method=track.search&track=Just%20another%20Day&api_key=42b1c939f4743c1795620262dc138cd4&format=json"
+        let url = "\(Constant.APIURL)&track=\(searchTerm)&api_key=\(Constant.APIKey)&format=json"
         //"https://api.johnlewis.com/v1/products/search?q=\(searchTerm)&key=Wu1Xqn3vNrd1p7hqkvB6hEu0G9OrsYGb&pageSize=\(pageSize)"
         API.fetchDatafromURLInBackground(url: url) { (response, error) in
             
@@ -130,7 +130,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         searchTerm = finalKeywords
         
         // Display searched term in title
-        title = "\(searchTerm.capitalized)"
+        title = "\(keywords.capitalized)"
         fetchDatafromURL()
 
         // Hide keyboard
