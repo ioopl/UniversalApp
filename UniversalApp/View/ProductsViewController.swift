@@ -9,7 +9,7 @@
 import UIKit
 import Reachability
 
-class ProductsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ProductsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
 
     // MARK: - Variables
     var products = [Product]()
@@ -128,5 +128,10 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 15.0
+    }
+    
+    // MARK: - UISearchBarDelegate Methods
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
     }
 }
