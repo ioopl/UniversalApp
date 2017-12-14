@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qt5-Ii-YGq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qt5-Ii-YGq">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,8 +22,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="GVK-Wd-NJO">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="966-S5-5vn">
-                                <rect key="frame" x="16" y="20" width="343" height="627"/>
+                                <rect key="frame" x="16" y="120" width="343" height="527"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sgA-qB-IHV">
                                     <size key="itemSize" width="150" height="180"/>
@@ -82,10 +86,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="GVK-Wd-NJO" secondAttribute="trailing" id="OYC-xB-t1S"/>
                             <constraint firstItem="966-S5-5vn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="RVA-Od-MTi"/>
-                            <constraint firstItem="966-S5-5vn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="20" id="XEj-3x-kuF"/>
+                            <constraint firstItem="GVK-Wd-NJO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="iyi-X3-2Y1"/>
+                            <constraint firstItem="966-S5-5vn" firstAttribute="top" secondItem="GVK-Wd-NJO" secondAttribute="bottom" id="lUd-51-gBz"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="966-S5-5vn" secondAttribute="bottom" constant="20" id="qHN-bP-yfw"/>
                             <constraint firstItem="966-S5-5vn" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="rYy-Wu-gd9"/>
+                            <constraint firstItem="GVK-Wd-NJO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="twK-L7-0zK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KNo-DW-c2z"/>
@@ -103,7 +110,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qt5-Ii-YGq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BNF-nf-Ggr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
