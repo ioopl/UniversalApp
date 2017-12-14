@@ -12,7 +12,7 @@ import Reachability
 class ProductsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
 
     // MARK: - Variables
-    var products = [Product]()
+    var results = [Results]()
 
     // MARK: - Constants
     private let reuseIdentifier = "Cell"
@@ -60,22 +60,19 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
 
     private func fetchDatafromURL() {
-        products.removeAll()
-        let url = "https://api.johnlewis.com/v1/products/search?q=\(searchTerm)&key=Wu1Xqn3vNrd1p7hqkvB6hEu0G9OrsYGb&pageSize=\(pageSize)"
+        results.removeAll()
+        let url = "http://ws.audioscrobbler.com/2.0/?method=track.search&track=Just%20another%20Day&api_key=42b1c939f4743c1795620262dc138cd4&format=json"
+        //"https://api.johnlewis.com/v1/products/search?q=\(searchTerm)&key=Wu1Xqn3vNrd1p7hqkvB6hEu0G9OrsYGb&pageSize=\(pageSize)"
         API.fetchDatafromURLInBackground(url: url) { (response, error) in
-
+            
             if let jsonDict = response as? [String:Any],
-                let productsArray = jsonDict["products"] as? [[String:Any]] {
-
-                for product in productsArray {
-                    let prod = Product(dictionary: [product])
-                    self.products.append(prod)
+                let resultsDictionary = jsonDict["results"] as? [String:Any],
+                let trackmatchesDictionary = resultsDictionary["trackmatches"] as? [String: Any],
+                let trackArray = trackmatchesDictionary["track"] as? [[String: Any]] {
+                for trackValue in trackArray {
+                    let prod = Results(dictionary: [trackValue])
+                    self.results.append(prod)
                 }
-                /* OR
-                 let prod = Product(dictionary: productsArray)
-                 self.products.append(prod)
-                 */
-
                 // Back to the main queue(thread), to access any UIKit classes.
                 DispatchQueue.main.async(execute: { () -> Void in
                     self.collectionView.reloadData()
@@ -97,7 +94,7 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     // MARK: - CollectionView Delegate/Datasource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return products.count
+        return results.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -106,12 +103,12 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 0.3
 
-        // ensure arrray is not empty
-        let count = products.count
+        // ensure array is not empty
+        let count = results.count
         if count > 0 {
-            cell.labelTitle.text = products[indexPath.row].title
-            cell.labelPrice.text = "£" + products[indexPath.row].price
-            let imageURL = "https:" + products[indexPath.row].image
+            cell.labelTitle.text = results[indexPath.row].name
+            cell.labelPrice.text = results[indexPath.row].artist
+            let imageURL = results[indexPath.row].image
             cell.imageViewThumbnail.downloadedFrom(link: imageURL, contentMode: UIViewContentMode.scaleAspectFill)
         }
         return cell
