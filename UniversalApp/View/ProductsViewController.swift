@@ -39,9 +39,6 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     // MARK: - Initialisation/Setup
     private func setupUI() {
-        
-        title = "\(searchTerm.capitalized)(\(pageSize))"
-        
         // Register collection view custom cell class
         collectionView.register(ProductsCollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseIdentifier)
         
@@ -134,6 +131,9 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
         guard let keywords = searchBar.text else { return }
         let finalKeywords = keywords.replacingOccurrences(of: " ", with: "+")
         searchTerm = finalKeywords
+        
+        // Display searched term in title
+        title = "\(searchTerm.capitalized))"
         fetchDatafromURL()
 
         // Hide keyboard
