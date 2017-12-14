@@ -39,14 +39,14 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     // MARK: - Initialisation/Setup
     private func setupUI() {
-
+        
         title = "\(searchTerm.capitalized)(\(pageSize))"
-
+        
         // Register collection view custom cell class
         collectionView.register(ProductsCollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseIdentifier)
-
-        guard self.hasConnectivity() else {
-            self.showAlertView(
+        
+        guard hasConnectivity() else {
+            showAlertView(
                 title: NSLocalizedString("TITLE_NETWORK_ERROR", comment: "Title for network error"),
                 message: NSLocalizedString("MESSAGE_CONNECTION_OFFLINE", comment: "Message shown when connection is offline."),
                 okTitle: NSLocalizedString("BTN_RETRY", comment: "Title for Retry button"),
@@ -63,6 +63,7 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
 
     private func fetchDatafromURL() {
+        products.removeAll()
         let url = "https://api.johnlewis.com/v1/products/search?q=\(searchTerm)&key=Wu1Xqn3vNrd1p7hqkvB6hEu0G9OrsYGb&pageSize=\(pageSize)"
         API.fetchDatafromURLInBackground(url: url) { (response, error) in
 
