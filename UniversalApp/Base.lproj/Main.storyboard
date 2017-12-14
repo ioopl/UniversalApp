@@ -98,6 +98,7 @@
                     <navigationItem key="navigationItem" id="KNo-DW-c2z"/>
                     <connections>
                         <outlet property="collectionView" destination="966-S5-5vn" id="lfy-18-css"/>
+                        <outlet property="searchBar" destination="GVK-Wd-NJO" id="eFV-eD-wGT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

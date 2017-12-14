@@ -21,7 +21,8 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
-
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     // MARK: - ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
