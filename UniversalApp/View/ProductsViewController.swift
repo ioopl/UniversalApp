@@ -134,5 +134,8 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
         let finalKeywords = keywords.replacingOccurrences(of: " ", with: "+")
         searchTerm = finalKeywords
         fetchDatafromURL()
+
+        // Hide keyboard
+        view.endEditing(true)
     }
 }
