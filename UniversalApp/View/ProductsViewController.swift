@@ -133,7 +133,7 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
         searchTerm = finalKeywords
         
         // Display searched term in title
-        title = "\(searchTerm.capitalized))"
+        title = "\(searchTerm.capitalized)"
         fetchDatafromURL()
 
         // Hide keyboard
