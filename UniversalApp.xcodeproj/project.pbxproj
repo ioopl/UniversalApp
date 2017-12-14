@@ -21,7 +21,7 @@
 		BCBA1E271E6209C300DDF238 /* UIWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA1E261E6209C300DDF238 /* UIWindow.swift */; };
 		BCBA1E2A1E62345A00DDF238 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA1E291E62345A00DDF238 /* API.swift */; };
 		BCBA1E2F1E62F42700DDF238 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA1E2E1E62F42700DDF238 /* Results.swift */; };
-		BCBA1E321E636FFE00DDF238 /* ProductsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA1E311E636FFE00DDF238 /* ProductsCollectionViewCell.swift */; };
+		BCBA1E321E636FFE00DDF238 /* MainCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA1E311E636FFE00DDF238 /* MainCollectionViewCell.swift */; };
 		BCC2FDA41E6394900030EB35 /* UIImageView+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC2FDA31E6394900030EB35 /* UIImageView+Helper.swift */; };
 		BCFB56171FE2F9C8002179E9 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCFB56161FE2F9C8002179E9 /* Constant.swift */; };
 /* End PBXBuildFile section */
@@ -58,7 +58,7 @@
 		BCBA1E261E6209C300DDF238 /* UIWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIWindow.swift; sourceTree = "<group>"; };
 		BCBA1E291E62345A00DDF238 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		BCBA1E2E1E62F42700DDF238 /* Results.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
-		BCBA1E311E636FFE00DDF238 /* ProductsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsCollectionViewCell.swift; sourceTree = "<group>"; };
+		BCBA1E311E636FFE00DDF238 /* MainCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCollectionViewCell.swift; sourceTree = "<group>"; };
 		BCC2FDA31E6394900030EB35 /* UIImageView+Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Helper.swift"; sourceTree = "<group>"; };
 		BCFB56161FE2F9C8002179E9 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		BEC2038B25FAE8B433FED67D /* Pods-UniversalApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniversalApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UniversalApp/Pods-UniversalApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -214,7 +214,7 @@
 		BCBA1E301E636F7100DDF238 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				BCBA1E311E636FFE00DDF238 /* ProductsCollectionViewCell.swift */,
+				BCBA1E311E636FFE00DDF238 /* MainCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -430,7 +430,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCBA1E321E636FFE00DDF238 /* ProductsCollectionViewCell.swift in Sources */,
+				BCBA1E321E636FFE00DDF238 /* MainCollectionViewCell.swift in Sources */,
 				BCBA1E211E61AFA700DDF238 /* MainViewController.swift in Sources */,
 				BCFB56171FE2F9C8002179E9 /* Constant.swift in Sources */,
 				BCC2FDA41E6394900030EB35 /* UIImageView+Helper.swift in Sources */,
