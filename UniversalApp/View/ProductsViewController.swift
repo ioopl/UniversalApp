@@ -16,7 +16,7 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     // MARK: - Constants
     private let reuseIdentifier = "Cell"
-    private let searchTerm = "Dishwasher"
+    private var searchTerm = String()
     private let pageSize = "20"
 
     // MARK: - Outlets
@@ -60,8 +60,6 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
             )
             return
         }
-
-        fetchDatafromURL()
     }
 
     private func fetchDatafromURL() {
@@ -132,6 +130,9 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     // MARK: - UISearchBarDelegate Methods
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
+        guard let keywords = searchBar.text else { return }
+        let finalKeywords = keywords.replacingOccurrences(of: " ", with: "+")
+        searchTerm = finalKeywords
+        fetchDatafromURL()
     }
 }
