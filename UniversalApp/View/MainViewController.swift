@@ -1,15 +1,15 @@
 //
-//  ProductsViewController.swift
+//  MainViewController.swift
 //  UniversalApp
 //
-//  Created by UHS on 25/02/2017.
+//  Created by UHS on 14/12/2017.
 //  Copyright © 2017 Apkia Technologies. All rights reserved.
 //
 
 import UIKit
 import Reachability
 
-class ProductsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
 
     // MARK: - Variables
     var results = [Results]()
