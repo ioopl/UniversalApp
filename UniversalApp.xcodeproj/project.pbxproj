@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3B9BA74A52A92D9FA4477C62 /* Pods_UniversalApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24744203AB8CAD33D772BF6B /* Pods_UniversalApp.framework */; };
 		7371FA89642B733BB25854B1 /* Pods_UniversalAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B198F443D6973971F37CA0CA /* Pods_UniversalAppTests.framework */; };
+		BC3BCB141FE3D4A700613E3E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3BCB131FE3D4A700613E3E /* DetailViewController.swift */; };
 		BCBA1DF91E5DF12200DDF238 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA1DF81E5DF12200DDF238 /* AppDelegate.swift */; };
 		BCBA1DFE1E5DF12200DDF238 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCBA1DFC1E5DF12200DDF238 /* Main.storyboard */; };
 		BCBA1E001E5DF12200DDF238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCBA1DFF1E5DF12200DDF238 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		A26B570F02109897EEBC6AAD /* Pods-UniversalAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniversalAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UniversalAppTests/Pods-UniversalAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		A6B662DC3D4DAACD51DC25B1 /* Pods-UniversalApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniversalApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-UniversalApp/Pods-UniversalApp.release.xcconfig"; sourceTree = "<group>"; };
 		B198F443D6973971F37CA0CA /* Pods_UniversalAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UniversalAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC3BCB131FE3D4A700613E3E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BCBA1DF51E5DF12200DDF238 /* UniversalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniversalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCBA1DF81E5DF12200DDF238 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCBA1DFD1E5DF12200DDF238 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				BCBA1E201E61AFA700DDF238 /* MainViewController.swift */,
+				BC3BCB131FE3D4A700613E3E /* DetailViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				BCBA1E251E62084400DDF238 /* UIViewController+Alerts.swift in Sources */,
 				BCBA1DF91E5DF12200DDF238 /* AppDelegate.swift in Sources */,
 				BCBA1E271E6209C300DDF238 /* UIWindow.swift in Sources */,
+				BC3BCB141FE3D4A700613E3E /* DetailViewController.swift in Sources */,
 				BCBA1E2A1E62345A00DDF238 /* API.swift in Sources */,
 				BCBA1E2F1E62F42700DDF238 /* Results.swift in Sources */,
 			);
