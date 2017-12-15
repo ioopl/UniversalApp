@@ -14,4 +14,5 @@ class MainCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageViewThumbnail: UIImageView!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelPrice: UILabel!
+    @IBOutlet weak var labelID: UILabel!
 }
