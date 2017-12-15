@@ -59,10 +59,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    // MARK: - API Call
     private func fetchDatafromURL() {
         results.removeAll()
         let url = "\(Constant.APIURL)&track=\(searchTerm)&api_key=\(Constant.APIKey)&format=json"
-        //"https://api.johnlewis.com/v1/products/search?q=\(searchTerm)&key=Wu1Xqn3vNrd1p7hqkvB6hEu0G9OrsYGb&pageSize=\(pageSize)"
         API.fetchDatafromURLInBackground(url: url) { (response, error) in
             
             if let jsonDict = response as? [String:Any],
@@ -70,8 +70,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 let trackmatchesDictionary = resultsDictionary["trackmatches"] as? [String: Any],
                 let trackArray = trackmatchesDictionary["track"] as? [[String: Any]] {
                 for trackValue in trackArray {
-                    let prod = Results(dictionary: [trackValue])
-                    self.results.append(prod)
+                    let response = Results(dictionary: [trackValue])
+                    self.results.append(response)
                 }
                 // Back to the main queue(thread), to access any UIKit classes.
                 DispatchQueue.main.async(execute: { () -> Void in
