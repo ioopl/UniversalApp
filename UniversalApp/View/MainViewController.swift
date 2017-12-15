@@ -10,15 +10,15 @@ import UIKit
 import Reachability
 
 class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
-
+    
     // MARK: - Variables
     var results = [Results]()
-
+    
     // MARK: - Constants
     private let reuseIdentifier = "Cell"
     private var searchTerm = String()
     private let pageSize = "20"
-
+    
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -31,12 +31,12 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupUI()
     }
-
+    
     // MARK: - Initialisation/Setup
     private func setupUI() {
         // Register collection view custom cell class
@@ -58,7 +58,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             return
         }
     }
-
+    
     private func fetchDatafromURL() {
         results.removeAll()
         let url = "\(Constant.APIURL)&track=\(searchTerm)&api_key=\(Constant.APIKey)&format=json"
@@ -80,7 +80,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
         }
     }
-
+    
     // MARK: - Reachability - Check Network Connectivity
     /**
      This API call checks if the Network is available.
@@ -91,18 +91,18 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let networkStatus: Int = reachability.currentReachabilityStatus().rawValue
         return networkStatus != 0
     }
-
+    
     // MARK: - CollectionView Delegate/Datasource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return results.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MainCollectionViewCell
         // add a border
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 0.3
-
+        
         // ensure array is not empty
         let count = results.count
         if count > 0 {
@@ -114,12 +114,12 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
         return cell
     }
-
+    
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 15.0
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 15.0
     }
@@ -127,11 +127,10 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - Navigation
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? MainCollectionViewCell else { return }
-        guard let objID = cell.labelID.text else { return }
-        //objectID = objID
+        guard let mbid = cell.labelID.text else { return }
+        objectId = mbid
         performSegue(withIdentifier: Constant.segueIdentifierMainController, sender: self)
     }
-    
     
     // MARK: - UISearchBarDelegate Methods
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -142,7 +141,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Display searched term in title
         title = "\(keywords.capitalized)"
         fetchDatafromURL()
-
+        
         // Hide keyboard
         view.endEditing(true)
     }
