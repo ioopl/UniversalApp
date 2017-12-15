@@ -11,13 +11,14 @@ import Foundation
 struct Results {
     // MARK: - Variables
     var image = String()
-    var id = String()
+    var mbid = String()
     var name = String()
     var artist = String()
     var url = String()
     
     init(dictionary : [[String:Any]]) {
         for result in dictionary {
+            mbid = result["mbid"] as! String
             name = result["name"] as! String
             artist = result["artist"] as! String
             url = result["url"] as! String
