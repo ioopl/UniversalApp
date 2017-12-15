@@ -110,6 +110,7 @@
                     <connections>
                         <outlet property="collectionView" destination="966-S5-5vn" id="lfy-18-css"/>
                         <outlet property="searchBar" destination="GVK-Wd-NJO" id="eFV-eD-wGT"/>
+                        <segue destination="L6B-6P-dvR" kind="show" identifier="segueFromMainViewToDetailView" id="kWR-gx-PTj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
