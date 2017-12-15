@@ -108,6 +108,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         if count > 0 {
             cell.labelTitle.text = results[indexPath.row].name
             cell.labelPrice.text = results[indexPath.row].artist
+            cell.labelID.text = results[indexPath.row].mbid
             let imageURL = results[indexPath.row].image
             cell.imageViewThumbnail.downloadedFrom(link: imageURL, contentMode: UIViewContentMode.scaleAspectFill)
         }
@@ -122,6 +123,15 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 15.0
     }
+    
+    // MARK: - Navigation
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? MainCollectionViewCell else { return }
+        guard let objID = cell.labelID.text else { return }
+        //objectID = objID
+        performSegue(withIdentifier: Constant.segueIdentifierMainController, sender: self)
+    }
+    
     
     // MARK: - UISearchBarDelegate Methods
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
