@@ -171,7 +171,7 @@
                                                 <constraint firstAttribute="width" secondItem="vrT-ye-kdt" secondAttribute="height" multiplier="1:1" id="84B-ws-rc1"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ir-fA-ND8">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ir-fA-ND8">
                                             <rect key="frame" x="67" y="386" width="240" height="51"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="51" id="fp1-pR-zRN"/>
@@ -180,8 +180,8 @@
                                             <color key="textColor" red="0.1078504183409115" green="0.10729733927249656" blue="0.10840349740932642" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Rc-5J-zUH">
-                                            <rect key="frame" x="8" y="501" width="359" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Rc-5J-zUH">
+                                            <rect key="frame" x="8" y="469" width="359" height="21"/>
                                             <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -195,9 +195,9 @@
                                         <constraint firstItem="1ir-fA-ND8" firstAttribute="top" secondItem="vrT-ye-kdt" secondAttribute="bottom" constant="8" id="RR6-RG-pMf"/>
                                         <constraint firstAttribute="trailing" secondItem="1ir-fA-ND8" secondAttribute="trailing" constant="68" id="c1x-2U-wsd"/>
                                         <constraint firstItem="vrT-ye-kdt" firstAttribute="leading" secondItem="n9S-9t-Shb" secondAttribute="leading" constant="67" id="cUa-T9-VvB"/>
-                                        <constraint firstAttribute="bottom" secondItem="2Rc-5J-zUH" secondAttribute="bottom" constant="145" id="fLZ-rA-Ddj"/>
+                                        <constraint firstAttribute="bottom" secondItem="2Rc-5J-zUH" secondAttribute="bottom" constant="177" id="fLZ-rA-Ddj"/>
                                         <constraint firstAttribute="trailing" secondItem="vrT-ye-kdt" secondAttribute="trailing" constant="68" id="gf6-Rj-PCp"/>
-                                        <constraint firstItem="2Rc-5J-zUH" firstAttribute="top" secondItem="1ir-fA-ND8" secondAttribute="bottom" constant="64" id="mvs-eB-44L"/>
+                                        <constraint firstItem="2Rc-5J-zUH" firstAttribute="top" secondItem="1ir-fA-ND8" secondAttribute="bottom" constant="32" id="mvs-eB-44L"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="light"/>
