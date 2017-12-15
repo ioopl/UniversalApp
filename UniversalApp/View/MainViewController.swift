@@ -1,27 +1,28 @@
 //
-//  ProductsViewController.swift
+//  MainViewController.swift
 //  UniversalApp
 //
-//  Created by UHS on 25/02/2017.
+//  Created by UHS on 14/12/2017.
 //  Copyright © 2017 Apkia Technologies. All rights reserved.
 //
 
 import UIKit
 import Reachability
 
-class ProductsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
+class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
+    
     // MARK: - Variables
-    var products = [Product]()
-
+    var results = [Results]()
+    
     // MARK: - Constants
     private let reuseIdentifier = "Cell"
-    private let searchTerm = "Dishwasher"
+    private var searchTerm = String()
     private let pageSize = "20"
-
+    
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
-
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     // MARK: - ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,22 +31,19 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
         collectionView.delegate = self
         collectionView.dataSource = self
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupUI()
     }
-
+    
     // MARK: - Initialisation/Setup
     private func setupUI() {
-
-        title = "\(searchTerm.capitalized)(\(pageSize))"
-
         // Register collection view custom cell class
-        collectionView.register(ProductsCollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseIdentifier)
-
-        guard self.hasConnectivity() else {
-            self.showAlertView(
+        collectionView.register(MainCollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: reuseIdentifier)
+        
+        guard hasConnectivity() else {
+            showAlertView(
                 title: NSLocalizedString("TITLE_NETWORK_ERROR", comment: "Title for network error"),
                 message: NSLocalizedString("MESSAGE_CONNECTION_OFFLINE", comment: "Message shown when connection is offline."),
                 okTitle: NSLocalizedString("BTN_RETRY", comment: "Title for Retry button"),
@@ -59,26 +57,22 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
             )
             return
         }
-
-        fetchDatafromURL()
     }
-
+    
+    // MARK: - API Call
     private func fetchDatafromURL() {
-        let url = "https://api.johnlewis.com/v1/products/search?q=\(searchTerm)&key=Wu1Xqn3vNrd1p7hqkvB6hEu0G9OrsYGb&pageSize=\(pageSize)"
+        results.removeAll()
+        let url = "\(Constant.APIURL)&track=\(searchTerm)&api_key=\(Constant.APIKey)&format=json"
         API.fetchDatafromURLInBackground(url: url) { (response, error) in
-
+            
             if let jsonDict = response as? [String:Any],
-                let productsArray = jsonDict["products"] as? [[String:Any]] {
-
-                for product in productsArray {
-                    let prod = Product(dictionary: [product])
-                    self.products.append(prod)
+                let resultsDictionary = jsonDict["results"] as? [String:Any],
+                let trackmatchesDictionary = resultsDictionary["trackmatches"] as? [String: Any],
+                let trackArray = trackmatchesDictionary["track"] as? [[String: Any]] {
+                for trackValue in trackArray {
+                    let response = Results(dictionary: [trackValue])
+                    self.results.append(response)
                 }
-                /* OR
-                 let prod = Product(dictionary: productsArray)
-                 self.products.append(prod)
-                 */
-
                 // Back to the main queue(thread), to access any UIKit classes.
                 DispatchQueue.main.async(execute: { () -> Void in
                     self.collectionView.reloadData()
@@ -86,7 +80,7 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
             }
         }
     }
-
+    
     // MARK: - Reachability - Check Network Connectivity
     /**
      This API call checks if the Network is available.
@@ -97,35 +91,58 @@ class ProductsViewController: UIViewController, UICollectionViewDelegate, UIColl
         let networkStatus: Int = reachability.currentReachabilityStatus().rawValue
         return networkStatus != 0
     }
-
+    
     // MARK: - CollectionView Delegate/Datasource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return products.count
+        return results.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ProductsCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MainCollectionViewCell
         // add a border
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.borderWidth = 0.3
-
-        // ensure arrray is not empty
-        let count = products.count
+        
+        // ensure array is not empty
+        let count = results.count
         if count > 0 {
-            cell.labelTitle.text = products[indexPath.row].title
-            cell.labelPrice.text = "£" + products[indexPath.row].price
-            let imageURL = "https:" + products[indexPath.row].image
+            cell.labelTitle.text = results[indexPath.row].name
+            cell.labelPrice.text = results[indexPath.row].artist
+            cell.labelID.text = results[indexPath.row].mbid
+            let imageURL = results[indexPath.row].image
             cell.imageViewThumbnail.downloadedFrom(link: imageURL, contentMode: UIViewContentMode.scaleAspectFill)
         }
         return cell
     }
-
+    
     // MARK: - UICollectionViewDelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 15.0
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 15.0
+    }
+    
+    // MARK: - Navigation
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? MainCollectionViewCell else { return }
+        guard let mbid = cell.labelID.text else { return }
+        objectId = mbid
+        performSegue(withIdentifier: Constant.segueIdentifierMainController, sender: self)
+    }
+    
+    // MARK: - UISearchBarDelegate Methods
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let keywords = searchBar.text else { return }
+        let finalKeywords = keywords.replacingOccurrences(of: " ", with: "+")
+        searchTerm = finalKeywords
+        
+        // Display searched term in title
+        title = "\(keywords.capitalized)"
+        fetchDatafromURL()
+        
+        // Hide keyboard
+        view.endEditing(true)
     }
 }

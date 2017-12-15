@@ -2,7 +2,7 @@
 //  UniversalAppTests.swift
 //  UniversalAppTests
 //
-//  Created by UHS on 22/02/2017.
+//  Created by UHS on 14/12/2017.
 //  Copyright © 2017 Apkia Technologies. All rights reserved.
 //
 
@@ -13,8 +13,8 @@ class UniversalAppTests: XCTestCase {
 
     var timeout:TimeInterval = 30.00
 
-    func testProductsAPIURL() {
-        let URL = NSURL(string: "https://api.johnlewis.com/v1/products/search?q=dishwasher&key=Wu1Xqn3vNrd1p7hqkvB6hEu0G9OrsYGb&pageSize=20")!
+    func testTracksAPIURL() {
+        let URL = NSURL(string: "http://ws.audioscrobbler.com/2.0/?method=track.search&track=Just%20another%20Day&api_key=42b1c939f4743c1795620262dc138cd4&format=json")!
         let expc = expectation(description: "Test Products Search API URL")
         let session = URLSession.shared
         let task = session.dataTask(with: URL as URL) { data, response, error in
