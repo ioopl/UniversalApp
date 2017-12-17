@@ -14,7 +14,6 @@
 		BCBA1DFE1E5DF12200DDF238 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCBA1DFC1E5DF12200DDF238 /* Main.storyboard */; };
 		BCBA1E001E5DF12200DDF238 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCBA1DFF1E5DF12200DDF238 /* Assets.xcassets */; };
 		BCBA1E031E5DF12200DDF238 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCBA1E011E5DF12200DDF238 /* LaunchScreen.storyboard */; };
-		BCBA1E0E1E5DF12200DDF238 /* UniversalAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA1E0D1E5DF12200DDF238 /* UniversalAppTests.swift */; };
 		BCBA1E191E61ABC000DDF238 /* APITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA1E181E61ABC000DDF238 /* APITests.swift */; };
 		BCBA1E1C1E61AD3700DDF238 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BCBA1E1B1E61AD3700DDF238 /* Localizable.strings */; };
 		BCBA1E211E61AFA700DDF238 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA1E201E61AFA700DDF238 /* MainViewController.swift */; };
@@ -51,7 +50,6 @@
 		BCBA1E021E5DF12200DDF238 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCBA1E041E5DF12200DDF238 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCBA1E091E5DF12200DDF238 /* UniversalAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UniversalAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BCBA1E0D1E5DF12200DDF238 /* UniversalAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversalAppTests.swift; sourceTree = "<group>"; };
 		BCBA1E0F1E5DF12200DDF238 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCBA1E181E61ABC000DDF238 /* APITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APITests.swift; sourceTree = "<group>"; };
 		BCBA1E1B1E61AD3700DDF238 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
@@ -146,7 +144,6 @@
 		BCBA1E0C1E5DF12200DDF238 /* UniversalAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				BCBA1E0D1E5DF12200DDF238 /* UniversalAppTests.swift */,
 				BCBA1E0F1E5DF12200DDF238 /* Info.plist */,
 				BCBA1E181E61ABC000DDF238 /* APITests.swift */,
 			);
@@ -462,7 +459,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCBA1E191E61ABC000DDF238 /* APITests.swift in Sources */,
-				BCBA1E0E1E5DF12200DDF238 /* UniversalAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
