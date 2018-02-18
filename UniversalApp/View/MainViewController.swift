@@ -8,6 +8,7 @@
 
 import UIKit
 import Reachability
+import DLRadioButton
 
 class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
@@ -22,7 +23,9 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
-    
+    @IBOutlet weak var radioButtonLocation: DLRadioButton!
+    @IBOutlet weak var radioButtonMusic: DLRadioButton!
+
     // MARK: - ViewController LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +60,19 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
             )
             return
         }
+    }
+    
+    // MARK: - RadioButton Methods
+    @IBAction func radioButtonLocationTapped(_ sender: Any) {
+        radioButtonLocation.isSelected = true
+        radioButtonMusic.isSelected = false
+        searchBar.placeholder = NSLocalizedString("TITLE_SEARCH_LOCATION", comment: "Title for network error")
+    }
+    
+    @IBAction func radioButtonMusicTapped(_ sender: Any) {
+        radioButtonMusic.isSelected = true
+        radioButtonLocation.isSelected = false
+        searchBar.placeholder = NSLocalizedString("TITLE_SEARCH_MUSIC", comment: "Title for network error")
     }
     
     // MARK: - API Call
