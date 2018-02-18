@@ -69,7 +69,7 @@ class DetailViewController: UIViewController {
     private func showAlert() {
         showAlertView(
             title: nil,
-            message: NSLocalizedString("MESSAGE_TRACK_NOT_FOUND", comment: "Message shown when track is not available."),
+            message: NSLocalizedString("MESSAGE_INFO_NOT_FOUND", comment: "Message shown when more info is not yet available."),
             okTitle: NSLocalizedString("BTN_OK", comment: "Title for OK button"),
             okHandler: { (action) -> Void in
                 self.navigationController?.popViewController(animated: true)

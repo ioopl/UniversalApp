@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import CoreLocation
 
 class API: NSObject {
 
@@ -32,6 +33,27 @@ class API: NSObject {
                 completion(nil, error as NSError?)
                 break
             }
+        }
+    }
+    
+    /**
+     Gets a coordinate from an address string.
+     - parameter addressString: Address String
+     - returns:  location coordinate.
+     */
+    class internal func getCoordinate(addressString : String,
+                                      completionHandler: @escaping(CLLocationCoordinate2D, NSError?) -> Void ) {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(addressString) { (placemarks, error) in
+            if error == nil {
+                if let placemark = placemarks?[0] {
+                    guard let location = placemark.location else { return }
+                    completionHandler(location.coordinate, nil)
+                    return
+                }
+            }
+            
+            completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
         }
     }
 }

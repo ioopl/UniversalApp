@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3B9BA74A52A92D9FA4477C62 /* Pods_UniversalApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24744203AB8CAD33D772BF6B /* Pods_UniversalApp.framework */; };
 		7371FA89642B733BB25854B1 /* Pods_UniversalAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B198F443D6973971F37CA0CA /* Pods_UniversalAppTests.framework */; };
+		BC38F5BE203A1379008C0667 /* FoursquareResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC38F5BD203A1379008C0667 /* FoursquareResults.swift */; };
 		BC3BCB141FE3D4A700613E3E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3BCB131FE3D4A700613E3E /* DetailViewController.swift */; };
 		BCBA1DF91E5DF12200DDF238 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBA1DF81E5DF12200DDF238 /* AppDelegate.swift */; };
 		BCBA1DFE1E5DF12200DDF238 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCBA1DFC1E5DF12200DDF238 /* Main.storyboard */; };
@@ -42,6 +43,7 @@
 		A26B570F02109897EEBC6AAD /* Pods-UniversalAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniversalAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UniversalAppTests/Pods-UniversalAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		A6B662DC3D4DAACD51DC25B1 /* Pods-UniversalApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniversalApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-UniversalApp/Pods-UniversalApp.release.xcconfig"; sourceTree = "<group>"; };
 		B198F443D6973971F37CA0CA /* Pods_UniversalAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UniversalAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC38F5BD203A1379008C0667 /* FoursquareResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoursquareResults.swift; sourceTree = "<group>"; };
 		BC3BCB131FE3D4A700613E3E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BCBA1DF51E5DF12200DDF238 /* UniversalApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniversalApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCBA1DF81E5DF12200DDF238 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				BCBA1E2E1E62F42700DDF238 /* Results.swift */,
+				BC38F5BD203A1379008C0667 /* FoursquareResults.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -389,11 +392,15 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-UniversalApp/Pods-UniversalApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/DLRadioButton/DLRadioButton.framework",
+				"${BUILT_PRODUCTS_DIR}/FoursquareAPIClient/FoursquareAPIClient.framework",
 				"${BUILT_PRODUCTS_DIR}/Reachability/Reachability.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DLRadioButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FoursquareAPIClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,6 +451,7 @@
 				BCBA1E321E636FFE00DDF238 /* MainCollectionViewCell.swift in Sources */,
 				BCBA1E211E61AFA700DDF238 /* MainViewController.swift in Sources */,
 				BCFB56171FE2F9C8002179E9 /* Constant.swift in Sources */,
+				BC38F5BE203A1379008C0667 /* FoursquareResults.swift in Sources */,
 				BCC2FDA41E6394900030EB35 /* UIImageView+Helper.swift in Sources */,
 				BCBA1E251E62084400DDF238 /* UIViewController+Alerts.swift in Sources */,
 				BCBA1DF91E5DF12200DDF238 /* AppDelegate.swift in Sources */,

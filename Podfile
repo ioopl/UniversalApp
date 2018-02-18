@@ -8,7 +8,8 @@ target 'UniversalApp' do
   # Pods for UniversalApp
 pod 'Alamofire', '~> 4.0'
 pod 'Reachability', '~> 3.2'
-
+pod 'DLRadioButton', '~> 1.4'
+pod 'FoursquareAPIClient'
 
   target 'UniversalAppTests' do
     inherit! :search_paths
