@@ -17,3 +17,7 @@
 // MARK: - Alert Messages
 "MESSAGE_CONNECTION_OFFLINE" = "Connection is offline.";
 "MESSAGE_TRACK_NOT_FOUND" = "Track not found.";
+
+// MARK: Placeholders
+"TITLE_SEARCH_MUSIC" = "Search your favourite song";
+"TITLE_SEARCH_LOCATION" = "Search popular venues";
