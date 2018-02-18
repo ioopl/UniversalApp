@@ -9,6 +9,8 @@
 import UIKit
 import Reachability
 import DLRadioButton
+import FoursquareAPIClient
+import CoreLocation
 
 class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UISearchBarDelegate {
     
@@ -19,7 +21,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private let reuseIdentifier = "Cell"
     private var searchTerm = String()
     private let pageSize = "20"
-    
+
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -76,9 +78,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     // MARK: - API Call
-    private func fetchDatafromURL() {
+    private func fetchDatafromURL(url: String) {
         results.removeAll()
-        let url = "\(Constant.APIURL)&track=\(searchTerm)&api_key=\(Constant.APIKey)&format=json"
         API.fetchDatafromURLInBackground(url: url) { (response, error) in
             
             if let jsonDict = response as? [String:Any],
@@ -93,6 +94,48 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 DispatchQueue.main.async(execute: { () -> Void in
                     self.collectionView.reloadData()
                 })
+            }
+        }
+    }
+    
+    // Foursquare API Call
+    private func fetchFoursquareVenueSearchfromLocation(location: String) {
+        API.getCoordinate(addressString: location) { (cllocation, error) in
+            let lat = cllocation.latitude
+            let lon = cllocation.longitude
+            self.getFoursquareVenueSearchfromCoordinates(lat: lat, lon: lon)
+        }
+    }
+    
+    private func getFoursquareVenueSearchfromCoordinates(lat: CLLocationDegrees, lon: CLLocationDegrees) {
+        
+        results.removeAll()
+        let client = FoursquareAPIClient(clientId: "CXCD5Q3O5P3RSARBDAECCIUQN45ZVO1PEKEEH5IRWQXDJDTQ", clientSecret: "QPOOVZEKEVBE5UC05VSM2BPK4Z3C5IPNFWAQKP2G21MU1MPG")
+        
+        let parameter: [String: String] = [
+            "ll": "\(lat),\(lon)",
+            "limit": "10",
+            ];
+        
+        client.request(path: Constant.APIURLLOCATION, parameter: parameter) { result in
+            switch result {
+            case let .success(data):
+                // parse the JSON data with NSJSONSerialization or Lib like SwiftyJson
+                // e.g. {"meta":{"code":200},"notifications":[{"...
+                let json = try! JSONSerialization.jsonObject(with: data, options: [])
+                print(json)
+                
+            case let .failure(error):
+                // Error handling
+                switch error {
+                case let .connectionError(connectionError):
+                    print(connectionError)
+                case let .responseParseError(responseParseError):
+                    print(responseParseError)   // e.g. JSON text did not start with array or object and option to allow fragments not set.
+                case let .apiError(apiError):
+                    print(apiError.errorType)   // e.g. endpoint_error
+                    print(apiError.errorDetail) // e.g. The requested path does not exist.
+                }
             }
         }
     }
@@ -156,8 +199,12 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         // Display searched term in title
         title = "\(keywords.capitalized)"
-        fetchDatafromURL()
-        
+        if radioButtonLocation.isSelected == true {
+            fetchFoursquareVenueSearchfromLocation(location: searchTerm)
+        } else {
+            let url = "\(Constant.APIURLMUSIC)&track=\(searchTerm)&api_key=\(Constant.APIKey)&format=json"
+            fetchDatafromURL(url: url)
+        }
         // Hide keyboard
         view.endEditing(true)
     }
