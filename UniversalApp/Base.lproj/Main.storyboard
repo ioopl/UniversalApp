@@ -38,8 +38,36 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="c9j-In-EMq"/>
                                 </connections>
                             </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x7t-vf-Wb9">
+                                <rect key="frame" x="16" y="121" width="343" height="52"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZX-A3-tyH" customClass="DLRadioButton">
+                                        <rect key="frame" x="192" y="10" width="105" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Music">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="radioButtonMusicTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FXe-hQ-BrS"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCm-HM-5yY" customClass="DLRadioButton">
+                                        <rect key="frame" x="41" y="10" width="108" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Location">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="radioButtonLocationTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tjo-EB-MEd"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="7Ir-N7-DTe"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="966-S5-5vn">
-                                <rect key="frame" x="16" y="120" width="343" height="527"/>
+                                <rect key="frame" x="16" y="173" width="343" height="474"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="sgA-qB-IHV">
                                     <size key="itemSize" width="150" height="180"/>
@@ -73,9 +101,11 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTK-3y-zjL">
-                                                    <rect key="frame" x="124" y="159" width="21" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTK-3y-zjL">
+                                                    <rect key="frame" x="132" y="159" width="21" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="21" id="vLR-sa-YY8"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="3"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -83,11 +113,14 @@
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="VTK-3y-zjL" secondAttribute="trailing" constant="-11" id="1Zv-0s-Nzx"/>
                                             <constraint firstItem="PC3-oD-4PM" firstAttribute="top" secondItem="Qnm-r9-F25" secondAttribute="bottom" id="3pr-U0-SaD"/>
                                             <constraint firstItem="S1f-Z2-cz2" firstAttribute="leading" secondItem="zm8-0N-P4u" secondAttribute="leading" id="4Qx-qh-KVM"/>
                                             <constraint firstItem="Qnm-r9-F25" firstAttribute="top" secondItem="S1f-Z2-cz2" secondAttribute="bottom" constant="8" symbolic="YES" id="8T1-Ev-OTT"/>
+                                            <constraint firstItem="VTK-3y-zjL" firstAttribute="top" secondItem="S1f-Z2-cz2" secondAttribute="bottom" constant="41" id="H3V-OS-WX9"/>
                                             <constraint firstItem="Qnm-r9-F25" firstAttribute="leading" secondItem="PC3-oD-4PM" secondAttribute="leading" id="I2G-nK-IPq"/>
                                             <constraint firstAttribute="bottom" secondItem="PC3-oD-4PM" secondAttribute="bottom" id="LAc-aC-Toa"/>
+                                            <constraint firstItem="VTK-3y-zjL" firstAttribute="bottom" secondItem="PC3-oD-4PM" secondAttribute="bottom" id="VA6-eV-q6Z"/>
                                             <constraint firstItem="Qnm-r9-F25" firstAttribute="trailing" secondItem="PC3-oD-4PM" secondAttribute="trailing" id="cP4-vZ-lpL"/>
                                             <constraint firstAttribute="trailing" secondItem="PC3-oD-4PM" secondAttribute="trailing" id="lCd-Al-x78"/>
                                             <constraint firstItem="PC3-oD-4PM" firstAttribute="leading" secondItem="zm8-0N-P4u" secondAttribute="leading" id="m1R-3I-QOg"/>
@@ -103,33 +136,16 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCm-HM-5yY" customClass="DLRadioButton">
-                                <rect key="frame" x="216" y="135" width="88" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Location">
-                                    <color key="titleColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="radioButtonLocationTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tjo-EB-MEd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZX-A3-tyH" customClass="DLRadioButton">
-                                <rect key="frame" x="216" y="173" width="88" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Music">
-                                    <color key="titleColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="radioButtonMusicTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FXe-hQ-BrS"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="x7t-vf-Wb9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="0cD-L2-bD6"/>
+                            <constraint firstItem="x7t-vf-Wb9" firstAttribute="top" secondItem="GVK-Wd-NJO" secondAttribute="top" constant="57" id="C98-qv-tsF"/>
+                            <constraint firstItem="x7t-vf-Wb9" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="LKh-3u-edp"/>
                             <constraint firstAttribute="trailing" secondItem="GVK-Wd-NJO" secondAttribute="trailing" id="OYC-xB-t1S"/>
                             <constraint firstItem="966-S5-5vn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="RVA-Od-MTi"/>
                             <constraint firstItem="GVK-Wd-NJO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="iyi-X3-2Y1"/>
-                            <constraint firstItem="966-S5-5vn" firstAttribute="top" secondItem="GVK-Wd-NJO" secondAttribute="bottom" id="lUd-51-gBz"/>
+                            <constraint firstItem="966-S5-5vn" firstAttribute="top" secondItem="x7t-vf-Wb9" secondAttribute="bottom" id="lUd-51-gBz"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="966-S5-5vn" secondAttribute="bottom" constant="20" id="qHN-bP-yfw"/>
                             <constraint firstItem="966-S5-5vn" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="rYy-Wu-gd9"/>
                             <constraint firstItem="GVK-Wd-NJO" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="twK-L7-0zK"/>
