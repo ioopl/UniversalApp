@@ -16,6 +16,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // MARK: - Variables
     var results = [Results]()
+    var venues: [Venue] = []
     
     // MARK: - Constants
     private let reuseIdentifier = "Cell"
@@ -99,17 +100,8 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     // Foursquare API Call
-    private func fetchFoursquareVenueSearchfromLocation(location: String) {
-        API.getCoordinate(addressString: location) { (cllocation, error) in
-            let lat = cllocation.latitude
-            let lon = cllocation.longitude
-            self.getFoursquareVenueSearchfromCoordinates(lat: lat, lon: lon)
-        }
-    }
-    
     private func getFoursquareVenueSearchfromCoordinates(lat: CLLocationDegrees, lon: CLLocationDegrees) {
-        
-        results.removeAll()
+        venues.removeAll()
         let client = FoursquareAPIClient(clientId: "CXCD5Q3O5P3RSARBDAECCIUQN45ZVO1PEKEEH5IRWQXDJDTQ", clientSecret: "QPOOVZEKEVBE5UC05VSM2BPK4Z3C5IPNFWAQKP2G21MU1MPG")
         
         let parameter: [String: String] = [
@@ -120,10 +112,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         client.request(path: Constant.APIURLLOCATION, parameter: parameter) { result in
             switch result {
             case let .success(data):
-                // parse the JSON data with NSJSONSerialization or Lib like SwiftyJson
-                // e.g. {"meta":{"code":200},"notifications":[{"...
-                let json = try! JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
+                self.bindDataToView(data: data)
                 
             case let .failure(error):
                 // Error handling
@@ -140,6 +129,31 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    // Get Coordinates from Apple Core Location API
+    private func fetchCoordinatesfromLocation(location: String) {
+        API.getCoordinate(addressString: location) { (cllocation, error) in
+            let lat = cllocation.latitude
+            let lon = cllocation.longitude
+            self.getFoursquareVenueSearchfromCoordinates(lat: lat, lon: lon)
+        }
+    }
+    
+    func bindDataToView(data: Data) {
+        let decoder: JSONDecoder = JSONDecoder()
+        do {
+            let response = try decoder.decode(Response<SearchResponse>.self, from: data)
+            self.venues = response.response.venues
+            // Back to the main queue(thread), to access any UIKit classes.
+            DispatchQueue.main.async(execute: { () -> Void in
+                self.collectionView.reloadData()
+            })
+            
+        } catch let error as NSError    {
+            print(error)
+        }
+    }
+    
+    
     // MARK: - Reachability - Check Network Connectivity
     /**
      This API call checks if the Network is available.
@@ -153,25 +167,53 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // MARK: - CollectionView Delegate/Datasource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if radioButtonLocation.isSelected == true {
+            return venues.count
+        } else {
         return results.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MainCollectionViewCell
-        // add a border
-        cell.layer.borderColor = UIColor.lightGray.cgColor
-        cell.layer.borderWidth = 0.3
-        
-        // ensure array is not empty
-        let count = results.count
-        if count > 0 {
-            cell.labelTitle.text = results[indexPath.row].name
-            cell.labelPrice.text = results[indexPath.row].artist
-            cell.labelID.text = results[indexPath.row].mbid
-            let imageURL = results[indexPath.row].image
-            cell.imageViewThumbnail.downloadedFrom(link: imageURL, contentMode: UIViewContentMode.scaleAspectFill)
+        if radioButtonLocation.isSelected {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MainCollectionViewCell
+            let venue = self.venues[(indexPath as NSIndexPath).row]
+            // Configure the cell...
+            cell.labelTitle?.text = venue.name
+            cell.labelPrice?.text = venue.location.address
+            
+            var categoryIconURL: String? = nil
+            if let categories = venue.categories {
+                if !categories.isEmpty {
+                    categoryIconURL = categories[0].icon.categoryIconUrl
+                }
+            }
+            if let imageURL = categoryIconURL  {
+                cell.backgroundColor = UIColor.gray
+                cell.imageViewThumbnail.downloadedFrom(link: imageURL, contentMode: UIViewContentMode.scaleAspectFill)
+            } else {
+                cell.imageViewThumbnail.image = UIImage()
+            }
+            
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MainCollectionViewCell
+            // add a border
+            cell.layer.borderColor = UIColor.lightGray.cgColor
+            cell.layer.borderWidth = 0.3
+            
+            // ensure array is not empty
+            let count = results.count
+            if count > 0 {
+                cell.labelTitle.text = results[indexPath.row].name
+                cell.labelPrice.text = results[indexPath.row].artist
+                cell.labelID.text = results[indexPath.row].mbid
+                let imageURL = results[indexPath.row].image
+                cell.imageViewThumbnail.downloadedFrom(link: imageURL, contentMode: UIViewContentMode.scaleAspectFill)
+            }
+            return cell
         }
-        return cell
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout
@@ -200,7 +242,7 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Display searched term in title
         title = "\(keywords.capitalized)"
         if radioButtonLocation.isSelected == true {
-            fetchFoursquareVenueSearchfromLocation(location: searchTerm)
+            fetchCoordinatesfromLocation(location: searchTerm)
         } else {
             let url = "\(Constant.APIURLMUSIC)&track=\(searchTerm)&api_key=\(Constant.APIKey)&format=json"
             fetchDatafromURL(url: url)
