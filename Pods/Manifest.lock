@@ -1,18 +1,21 @@
 PODS:
   - Alamofire (4.6.0)
   - DLRadioButton (1.4.11)
+  - FoursquareAPIClient (4.0.1)
   - Reachability (3.2)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - DLRadioButton (~> 1.4)
+  - FoursquareAPIClient
   - Reachability (~> 3.2)
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   DLRadioButton: 0d04b8259e7bfd886571a1e9173c73fee7118f50
+  FoursquareAPIClient: 12fbe6aa7b11485ee8314c7590458b6baa226f4e
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
 
-PODFILE CHECKSUM: c1c225a9b705fb776b30d41e579f7db756ae0689
+PODFILE CHECKSUM: ed7bfe40937805d3648b52056cf1d07a42281f66
 
 COCOAPODS: 1.3.1
